@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+        
+      <div align='center' id="paavalikko">
+
+        <saaennuste></saaennuste><!--tulostaa otsikkorivin-->
+        Paikkakunta:
+        <input type="text" v-model="paikkakunta" @keyup.enter="haePaivamaarat()">
+        <button type="button" name="button" @click="haePaivamaarat()">Hae</button>
+        <br><br>
+        Pikavalinnat:
+        <button type="button" name="button" @click="asetaPaikkakunta('Seinäjoki')">Seinäjoki</button>
+        <button type="button" name="button" @click="asetaPaikkakunta('Tampere')">Tampere</button>
+        <button type="button" name="button" @click="asetaPaikkakunta('Ruovesi')">Ruovesi</button>
+        <button type="button" name="button" @click="asetaPaikkakunta('Virrat')">Virrat</button>
+        <button type="button" name="button" @click="asetaPaikkakunta('Helsinki')">Helsinki</button>
+ 
+        <br><br>
+
+        <!--tulostetaan päivämääränapit näkyviin vasta kun paikkakunta on syötetty,
+        minkä seurauksena myös päivämäärälista on luotu--> 
+        <div class='samaRivi'  v-if="paivamaarat.length != 1" v-for="item in paivamaarat">
+          <button type="button" name="button" @click="asetaPaiva()" :id="item.paivamaara">{{ item.viikonpaiva }} {{ item.paivamaara }}</button>
+        </div>
+
+      </div>
+
+      <!--tulostetaan valittu päivämäärä näkyville-->
+      <h2 align='center' v-for="item in paivamaarat" v-if="item.paivamaara==valittuPaiva">{{ item.viikonpaiva }} {{item.paivamaara}}</h2>
+      <br><br>
+
+
+      <!-- komponentti, tulostaa valitun päivän säätiedot näkyville -->
+      <saa-item class='samaRivi' id="saaruutu" v-for="item in saa" v-if="item.paiva==valittuPaiva" v-bind:key="item.id" :saa="item"></saa-item>
+         
+      <!--  tähän tulostuu virheilmoitus, jos etsittyä kaupunkia ei löydy-->
+      <h4 align='center'>{{ virheilmoitus }}</h4> 
+
+
+        
+    </div>
+
+    <!--scriptien järjestyksellä on väliä-->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="saa.js"></script>
+    
+  </body>
+</html>

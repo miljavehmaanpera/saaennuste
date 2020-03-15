@@ -1,0 +1,40 @@
+.samaRivi{
+    display: inline-block;
+}
+#saaruutu{
+
+      color: black;
+      padding: 15px;
+}
+button{
+    background-color:steelblue;
+    color: azure;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+body{
+    background-color:powderblue;
+}
+
+div{
+    font-family: 'Lucida Sans';
+}
+
+#paavalikko{
+    background-color: azure;
+    padding: 0 0 30px 0;
+    font-size: 15px;
+}
+
+.miinusAsteita{
+    color: blue;
+    font-size: 20px;
+}
+
+.plusAsteita{
+    color: red;
+    font-size: 20px;
+}
